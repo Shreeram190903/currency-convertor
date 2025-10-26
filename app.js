@@ -5,6 +5,7 @@ let input = document.querySelector("input");
 let fromCur = document.querySelector(".from select");
 let toCur = document.querySelector(".to select");
 let msg = document.querySelector(".msg");
+let change = document.querySelector("#change");
 
 // Adding optins to dropdown
 for(let select of dropdowns){
@@ -63,6 +64,15 @@ if(input.value < 0 || input.value === "")
 btn.addEventListener("click",(evt)=>{
     evt.preventDefault();
     updateValue(evt);
+});
+
+change.addEventListener("click",()=>{
+    let from = fromCur.value;
+    let to = toCur.value;
+    fromCur.value = to;
+    updateFlag(fromCur);
+    toCur.value = from;
+    updateFlag(toCur);
 });
 
 window.addEventListener("load",updateValue);
